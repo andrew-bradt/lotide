@@ -6,17 +6,17 @@ const assertEqual = (actual, expected) => {
   }
 };
 
-const eqArrays = (actual, expected) => {
+const eqArrays = (array1, array2) => {
   let i = 0;
-  if (actual.length === expected.length) {
-    while (i < actual.length) {
-      if (actual[i] !== expected[i]) {
+  if (array1.length === array2.length) {
+    while (i < array1.length) {
+      if (array1[i] !== array2[i]) {
         break;
       }
       i++;
     }
   }
-  return i === actual.length;
+  return i === array1.length;
 };
 
 // The following cases should pass
