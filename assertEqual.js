@@ -10,3 +10,5 @@ assertEqual("Lighthouse Labs", "Bootcamp");
 assertEqual("Dog", "Dog");
 assertEqual(1, 1);
 assertEqual(99, 101);
+
+module.exports = assertEqual;
