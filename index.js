@@ -4,7 +4,7 @@ const head = require('./head');
 const middle = require('./middle');
 const tail = require('./tail');
 
-// Functions with Old Tests
+// Functions which need Automated Tests - Old Test Code Commented out in their corresponding test file
 const countOnly = require('./countOnly');
 const eqArrays = require('./eqArrays');
 const eqObjects = require('./eqObjects');
