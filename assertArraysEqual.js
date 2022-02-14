@@ -1,19 +1,9 @@
-const eqArrays = (array1, array2) => {
-  let i = 0;
-  if (array1.length === array2.length) {
-    while (i < array1.length) {
-      if (array1[i] !== array2[i]) {
-        break;
-      }
-      i++;
-    }
-  }
-  return i === array1.length;
-};
+const {inspect} = require('util');
+const eqArrays = require('./eqArrays');
 
 const assertArraysEqual = (actual, expected) => {
-  const actualStringified = JSON.stringify(actual);
-  const expectedStringified = JSON.stringify(expected);
+  const actualStringified = inspect(actual);
+  const expectedStringified = inspect(expected);
   const result = eqArrays(actual, expected);
   if (result) {
     console.log(`✅✅✅: ${actualStringified} === ${expectedStringified}`);
@@ -22,11 +12,4 @@ const assertArraysEqual = (actual, expected) => {
   }
 };
 
-// The following cases should pass
-assertArraysEqual(['a', 2], ['a', 2]);
-assertArraysEqual([false, true], [false, true]);
-assertArraysEqual([], []);
-
-// The following cases should fail
-assertArraysEqual(['1', 1], [1, 1]);
-assertArraysEqual([null], []);
+module.exports = assertArraysEqual;
