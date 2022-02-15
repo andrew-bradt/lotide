@@ -1,18 +1,10 @@
-const eqArrays = require('./eqArrays');
-
 const eqObjects = (obj1, obj2) => {
-  const obj1Length = Object.keys(obj1).length;
-  const obj2Length = Object.keys(obj2).length;
-
-  if (obj1Length !== obj2Length) return false;
-
-  for (const key in obj1) {
-    const isObj1Array = Array.isArray(obj1[key]);
-    const isObj2Array = Array.isArray(obj2[key]);
-    if (isObj1Array || isObj2Array) {
-      const areArrays = isObj1Array === isObj2Array;
-      const areEqualArrays = eqArrays(obj1[key], obj2[key]);
-      if (!areArrays || !areEqualArrays) return false;
+  const obj1Keys = Object.keys(obj1);
+  const obj2Keys = Object.keys(obj2);
+  if (obj1Keys.length !== obj2Keys.length) return false;
+  for (const key of obj1Keys) {
+    if (typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
+      return eqObjects(obj1[key], obj2[key]);
     } else {
       if (obj1[key] !== obj2[key]) return false;
     }
