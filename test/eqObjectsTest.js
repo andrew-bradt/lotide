@@ -1,18 +1,53 @@
-// const firstNames = [
-//   "Karl",
-//   "Salima",
-//   "Agouhanna",
-//   "Fang",
-//   "Kavith",
-//   "Jason",
-//   "Salima",
-//   "Fang",
-//   "Joe"
-// ];
+const {assert} = require('chai');
+const eqObjects = require('../eqObjects');
 
-// const result1 = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false });
-
-// assertEqual(result1["Jason"], 1);
-// assertEqual(result1["Karima"], undefined);
-// assertEqual(result1["Fang"], 2);
-// assertEqual(result1["Agouhanna"], undefined);
+describe('#eqObjects', ()=>{
+  it("{ a:{ {z: 1, b:2 }, { a: { z:1 }, b:2 } should return true", ()=>{
+    const obj1 = {
+      a: {
+        z: 1,
+        b: 2
+      }
+    };
+    const obj2 = {
+      a: {
+        z: 1,
+        b: 2
+      }
+    };
+    const actual = eqObjects(obj1, obj2);
+    assert.isTrue(actual);
+  });
+  it("{ a: { y: 0, z: 1 }, b: 2 }, { a: { z : 1}, b: 2 } should return false", ()=>{
+    const obj1 = {
+      a: {
+        y: 0,
+        z: 1
+      },
+      b: 2
+    };
+    const obj2 = {
+      a: {
+        z: 1
+      },
+      b: 2
+    };
+    const actual = eqObjects(obj1, obj2);
+    assert.isFalse(actual);
+  });
+  it("{ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2} should return false", ()=>{
+    const obj1 = {
+      a: {
+        y: 0,
+        z: 1
+      },
+      b: 1
+    };
+    const obj2 = {
+      a: 1,
+      b: 2
+    };
+    const actual = eqObjects(obj1, obj2);
+    assert.isFalse(actual);
+  });
+});
