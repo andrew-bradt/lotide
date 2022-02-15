@@ -32,7 +32,7 @@ The following functions are currently implemented:
 * `tail(array)`: Returns a new array without the first element of the array passed as an argument.
 * `countOnly(allItems, itemsToCount)` : Returns a new object with properties for each item in the array ```allItems``` and corresponding property with a truthy value in ```itemsToCount```. The value of each property will be the number of occurrences a given key appears in ```allItems```.
 * `eqArrays(array1, array2)` : Compares two one-dimensional arrays for strict equality and returns a boolean value.
-* `eqObjects(object1, object2)` : Compares two objects for strict equality and returns a boolean value. Currently supports objects containing primitive types or nested one-dimensional arrays. 
+* `eqObjects(object1, object2)` : Recursively compares two objects for strict equality and returns a boolean value. Nested array comparison TBD. 
 * `findKey(object, callback)` : Iterates over the object providing a property's value as the argument to the provided callback. Returns the key of the first value which caused the callback to return a truthy value. 
 * `findKeyByValue(object, matchingVal)` : Iterates over the provided object and returns the first key whose value strictly matches ```matchingVal```. 
 * `flatten(array)` : Creates a one-dimensional copy of the input array.  Currently supports two-dimensional arrays.
